@@ -376,6 +376,8 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>This API allows external clients create orders in our system.</p>
+
+<p>Base domain: https://lms.godeploy.it/</p>
 <h1 id='authentication'>Authentication</h1>
 <p>The Orders API uses Bearer tokens to authenticate requests. Contact our support to receive a JWT token.</p>
 
@@ -396,12 +398,12 @@ You must replace <code>JWTToken</code> with your JWT token.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"451d2195-25ec-e811-8373-00155d016234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ-300"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ-300 (Packaged Set) - (Azure Pass)"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"courseIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/451d2195-25ec-e811-8373-00155d016234"</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -458,12 +460,12 @@ Remember — always include the businessUnitId as a query parameter!
 <p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"451d2195-25ec-e811-8373-00155d026631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ-300"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ-300 (Packaged Set) - (Azure Pass)"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"courseIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/451d2195-25ec-e811-8373-00155d026631"</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -507,8 +509,8 @@ Remember — always include the businessUnitId as a query parameter!
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e903e8cf-6438-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"451d2195-25ec-e811-8373-00155d026631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6c1cb36-43b3-4969-a8a0-48e4915e6df0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard - 180 days"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"courseAccessPeriodDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
       </span><span class="nl">"moduleSavePeriodDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -519,7 +521,7 @@ Remember — always include the businessUnitId as a query parameter!
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/451d2195-25ec-e811-8373-00155d026631/feature_sets/e903e8cf-6438-e911-8373-00155d026631"</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf/feature_sets/a6c1cb36-43b3-4969-a8a0-48e4915e6df0"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -574,8 +576,8 @@ Remember — always include the businessUnitId as a query parameter!
 <p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e903e8cf-6438-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"451d2195-25ec-e811-8373-00155d026631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6c1cb36-43b3-4969-a8a0-48e4915e6df0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b126cae-c10c-466a-b867-f23fe48bf5cf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard - 180 days"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"courseAccessPeriodDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
   </span><span class="nl">"moduleSavePeriodDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -586,7 +588,7 @@ Remember — always include the businessUnitId as a query parameter!
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/451d2195-25ec-e811-8373-00155d026631/feature_sets/e903e8cf-6438-e911-8373-00155d026631"</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf/feature_sets/a6c1cb36-43b3-4969-a8a0-48e4915e6df0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -635,18 +637,18 @@ Remember — always include the businessUnitId as a query parameter!
   </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0bb7a818-cecb-4c5a-9822-22e62f85589a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"businessUnit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DF66878B-8787-4D40-9A17-7E705B734833"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ed28eef-a8a6-4f29-8723-6d759746b141"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"createdByUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"forename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41ff59ab-a364-4c01-a92f-2271d709a1f1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"go deploy"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoiceable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -718,9 +720,9 @@ Remember — always include the businessUnitId as a query parameter!
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DF66878B-8787-4D40-9A17-7E705B734833"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0bb7a818-cecb-4c5a-9822-22e62f85589a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ed28eef-a8a6-4f29-8723-6d759746b141"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41ff59ab-a364-4c01-a92f-2271d709a1f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"purchasingOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423432432"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contactForename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contactSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
@@ -790,18 +792,18 @@ Remember — always include the businessUnitId as a query parameter!
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35044</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0bb7a818-cecb-4c5a-9822-22e62f85589a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"businessUnit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133g13e5-5cf3-4692-afa7-3b7548f00d44"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ed28eef-a8a6-4f29-8723-6d759746b141"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdByUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"forename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41ff59ab-a364-4c01-a92f-2271d709a1f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"purchasingOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contactForename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contactSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
@@ -818,6 +820,58 @@ Remember — always include the businessUnitId as a query parameter!
 <p>This endpoint creates an Order.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST api/v2/orders?businessUnitId=yourBusinessUnitId</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>purchaseOrderReference</td>
+<td>true</td>
+</tr>
+<tr>
+<td>contactEmail</td>
+<td>false (required if emailKeys is set to <code>true</code>)</td>
+</tr>
+<tr>
+<td>emailKeys</td>
+<td>true</td>
+</tr>
+<tr>
+<td>orderItems</td>
+<td>true</td>
+</tr>
+<tr>
+<td>orderItems[].featureSetId</td>
+<td>true</td>
+</tr>
+<tr>
+<td>orderItems[].quantity</td>
+<td>true</td>
+</tr>
+<tr>
+<td>orderItems[].sourceReference</td>
+<td>false</td>
+</tr>
+<tr>
+<td>orderItems[].feedbackLinkUri</td>
+<td>false</td>
+</tr>
+<tr>
+<td>orderItems[].feedbackLinkText</td>
+<td>false</td>
+</tr>
+<tr>
+<td>orderItems[].enableFeedbackLink</td>
+<td>false</td>
+</tr>
+<tr>
+<td>orderItems[].achievementCode</td>
+<td>false</td>
+</tr>
+</tbody></table>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -845,7 +899,7 @@ Remember — always include the businessUnitId as a query parameter!
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"featureSetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94771bf7-6b38-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"featureSetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6c1cb36-43b3-4969-a8a0-48e4915e6df0"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"enableFeedbackLink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M10999A - SQL Server on Linux (Standard - 180 days)"</span><span class="p">,</span><span class="w">
