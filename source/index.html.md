@@ -23,6 +23,8 @@ meta:
 
 This API allows external clients create orders in our system.
 
+Base domain: https://lms.godeploy.it/
+
 # Authentication
 
 The Orders API uses Bearer tokens to authenticate requests. Contact our support to receive a JWT token.
@@ -48,12 +50,12 @@ You must replace <code>JWTToken</code> with your JWT token.
 {
   "items": [
     {
-      "id": "451d2195-25ec-e811-8373-00155d016234",
+      "id": "6b126cae-c10c-466a-b867-f23fe48bf5cf",
       "code": "AZ-300",
       "name": "AZ-300 (Packaged Set) - (Azure Pass)",
       "courseIds": [],
       "_links": {
-        "self": "/api/v2/products/451d2195-25ec-e811-8373-00155d016234"
+        "self": "/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf"
       }
     }
   ],
@@ -99,12 +101,12 @@ Remember — always include the businessUnitId as a query parameter!
 
 ```json
 {
-  "id": "451d2195-25ec-e811-8373-00155d026631",
+  "id": "6b126cae-c10c-466a-b867-f23fe48bf5cf",
   "code": "AZ-300",
   "name": "AZ-300 (Packaged Set) - (Azure Pass)",
   "courseIds": [],
   "_links": {
-    "self": "/api/v2/products/451d2195-25ec-e811-8373-00155d026631"
+    "self": "/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf"
   }
 }
 ```
@@ -141,8 +143,8 @@ Remember — always include the businessUnitId as a query parameter!
 {
   "items": [
     {
-      "id": "e903e8cf-6438-e911-8373-00155d026631",
-      "productId": "451d2195-25ec-e811-8373-00155d026631",
+      "id": "a6c1cb36-43b3-4969-a8a0-48e4915e6df0",
+      "productId": "6b126cae-c10c-466a-b867-f23fe48bf5cf",
       "name": "Standard - 180 days",
       "courseAccessPeriodDays": 180,
       "moduleSavePeriodDays": 1,
@@ -153,7 +155,7 @@ Remember — always include the businessUnitId as a query parameter!
         }
       ],
       "_links": {
-        "self": "/api/v2/products/451d2195-25ec-e811-8373-00155d026631/feature_sets/e903e8cf-6438-e911-8373-00155d026631"
+        "self": "/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf/feature_sets/a6c1cb36-43b3-4969-a8a0-48e4915e6df0"
       }
     }
   ],
@@ -197,8 +199,8 @@ Remember — always include the businessUnitId as a query parameter!
 
 ```json
 {
-  "id": "e903e8cf-6438-e911-8373-00155d026631",
-  "productId": "451d2195-25ec-e811-8373-00155d026631",
+  "id": "a6c1cb36-43b3-4969-a8a0-48e4915e6df0",
+  "productId": "6b126cae-c10c-466a-b867-f23fe48bf5cf",
   "name": "Standard - 180 days",
   "courseAccessPeriodDays": 180,
   "moduleSavePeriodDays": 1,
@@ -209,7 +211,7 @@ Remember — always include the businessUnitId as a query parameter!
     }
   ],
   "_links": {
-    "self": "/api/v2/products/451d2195-25ec-e811-8373-00155d026631/feature_sets/e903e8cf-6438-e911-8373-00155d026631"
+    "self": "/api/v2/products/6b126cae-c10c-466a-b867-f23fe48bf5cf/feature_sets/a6c1cb36-43b3-4969-a8a0-48e4915e6df0"
   }
 }
 ```
@@ -248,18 +250,18 @@ Remember — always include the businessUnitId as a query parameter!
   "items": [
     {
       "id": 1,
-      "businessUnitId": "4f48f74f-1738-e911-8373-00155d026631",
+      "businessUnitId": "0bb7a818-cecb-4c5a-9822-22e62f85589a",
       "businessUnit": {
         "name": "UK"
       },
-      "createdByUserId": "DF66878B-8787-4D40-9A17-7E705B734833",
+      "createdByUserId": "8ed28eef-a8a6-4f29-8723-6d759746b141",
       "createdByUser": {
         "forename": "John",
         "surname": "Smith",
         "name": "John Smith",
         "userName": "johnsmith@example.com"
       },
-      "orderSourceId": "67a6b9b1-8a96-4b64-8165-0207e132dd0a",
+      "orderSourceId": "41ff59ab-a364-4c01-a92f-2271d709a1f1",
       "orderSource": {
         "name": "go deploy",
         "invoiceable": true
@@ -320,9 +322,9 @@ Remember — always include the businessUnitId as a query parameter!
 ```json
 {
   "id": 1,
-  "businessUnitId": "4f48f74f-1738-e911-8373-00155d026631",
-  "createdByUserId": "DF66878B-8787-4D40-9A17-7E705B734833",
-  "orderSourceId": "67a6b9b1-8a96-4b64-8165-0207e132dd0a",
+  "businessUnitId": "0bb7a818-cecb-4c5a-9822-22e62f85589a",
+  "createdByUserId": "8ed28eef-a8a6-4f29-8723-6d759746b141",
+  "orderSourceId": "41ff59ab-a364-4c01-a92f-2271d709a1f1",
   "purchasingOrderReference": "423432432",
   "contactForename": "John",
   "contactSurname": "Smith",
@@ -384,18 +386,18 @@ Remember — always include the businessUnitId as a query parameter!
 ```json
 {
   "id": 35044,
-  "businessUnitId": "4f48f74f-1738-e911-8373-00155d026631",
+  "businessUnitId": "0bb7a818-cecb-4c5a-9822-22e62f85589a",
   "businessUnit": {
     "name": "UK"
   },
-  "createdByUserId": "133g13e5-5cf3-4692-afa7-3b7548f00d44",
+  "createdByUserId": "8ed28eef-a8a6-4f29-8723-6d759746b141",
   "createdByUser": {
     "forename": "John",
     "surname": "Smith",
     "name": "John Smith",
     "userName": "johnsmith@example.com"
   },
-  "orderSourceId": "67a6b9b1-8a96-4b64-8165-0207e132dd0a",
+  "orderSourceId": "41ff59ab-a364-4c01-a92f-2271d709a1f1",
   "purchasingOrderReference": "123456",
   "contactForename": "John",
   "contactSurname": "Smith",
@@ -415,6 +417,22 @@ This endpoint creates an Order.
 ### HTTP Request
 
 `POST api/v2/orders?businessUnitId=yourBusinessUnitId`
+
+### Request Parameters
+
+Parameter | Required 
+-----------|----------
+purchaseOrderReference | true     
+contactEmail | false (required if emailKeys is set to `true`)
+emailKeys | true
+orderItems | true
+orderItems[].featureSetId | true
+orderItems[].quantity | true
+orderItems[].sourceReference | false
+orderItems[].feedbackLinkUri | false
+orderItems[].feedbackLinkText | false
+orderItems[].enableFeedbackLink | false
+orderItems[].achievementCode | false
 
 ### Query Parameters
 
@@ -438,7 +456,7 @@ Remember — always include the businessUnitId as a query parameter!
     {
       "orderId": 1,
       "id": 1,
-      "featureSetId": "94771bf7-6b38-e911-8373-00155d026631",
+      "featureSetId": "a6c1cb36-43b3-4969-a8a0-48e4915e6df0",
       "quantity": 1,
       "enableFeedbackLink": false,
       "description": "M10999A - SQL Server on Linux (Standard - 180 days)",
