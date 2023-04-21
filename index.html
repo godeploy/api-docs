@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Kittn API"
+            content="Documentation for go deploy Order API"
         >
     <title>go deploy - Order API Reference</title>
 
@@ -339,8 +339,27 @@
                   <li>
                     <a href="#get-a-specific-feature-set-for-a-product" class="toc-h2 toc-link" data-title="Get a Specific Feature Set for a Product">Get a Specific Feature Set for a Product</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get All Orders">Get All Orders</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-order" class="toc-h2 toc-link" data-title="Get a Specific Order">Get a Specific Order</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an Order">Create an Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order-items" class="toc-h1 toc-link" data-title="Order Items">Order Items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-order-items-for-an-order" class="toc-h2 toc-link" data-title="Get All Order Items for an Order">Get All Order Items for an Order</a>
                   </li>
               </ul>
           </li>
@@ -356,44 +375,23 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>This API allows external clients create orders in our system.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>The Orders API uses Bearer tokens to authenticate requests. Contact our support to receive a JWT token.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Your JWT token has many privileges, so keep it safe.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>Use your JWT token by adding it to the Authorization header as seen in the following example:
+<code>Authorization: Bearer JWTToken</code></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>All API requests must have authentication header present.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>JWTToken</code> with your JWT token.
 </aside>
 <h1 id='products'>Products</h1><h2 id='get-all-products'>Get All Products</h2>
 <blockquote>
-<p>The following command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -457,7 +455,7 @@ Remember — always include the businessUnitId as a query parameter!
 </aside>
 <h2 id='get-a-specific-product'>Get a Specific Product</h2>
 <blockquote>
-<p>The following command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"451d2195-25ec-e811-8373-00155d026631"</span><span class="p">,</span><span class="w">
@@ -470,10 +468,6 @@ Remember — always include the businessUnitId as a query parameter!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific Product.</p>
-
-<aside class="success">
-Remember — always include the businessUnitId as a query parameter! 
-</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET api/v2/products/{productId}?businessUnitId=yourBusinessUnitId</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -502,9 +496,13 @@ Remember — always include the businessUnitId as a query parameter!
 <td>The id of the business unit to query against</td>
 </tr>
 </tbody></table>
+
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
 <h1 id='feature-sets'>Feature Sets</h1><h2 id='get-all-feature-sets-for-a-product'>Get All Feature Sets for a Product</h2>
 <blockquote>
-<p>The following command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -573,7 +571,7 @@ Remember — always include the businessUnitId as a query parameter!
 </aside>
 <h2 id='get-a-specific-feature-set-for-a-product'>Get a Specific Feature Set for a Product</h2>
 <blockquote>
-<p>The following command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e903e8cf-6438-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
@@ -593,10 +591,6 @@ Remember — always include the businessUnitId as a query parameter!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific Feature Set for a Product.</p>
-
-<aside class="success">
-Remember — always include the businessUnitId as a query parameter! 
-</aside>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET api/v2/products/{productId}/feature_sets/{featureSetId}?businessUnitId=yourBusinessUnitId</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
@@ -629,33 +623,117 @@ Remember — always include the businessUnitId as a query parameter!
 <td>The id of the business unit to query against</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
+<h1 id='orders'>Orders</h1><h2 id='get-all-orders'>Get All Orders</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"businessUnit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DF66878B-8787-4D40-9A17-7E705B734833"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdByUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"forename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"go deploy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invoiceable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"purchasingOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423432432"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactForename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-24T20:04:30.473"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"editable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cancellable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/orders/1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"_pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">415</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalItemCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4150</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasPreviousPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFirstPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLastPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstItemOnPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastItemOnPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/orders?_page=2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
+<p>This endpoint returns a paginated set of Orders.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>GET api/v2/orders?businessUnitId=yourBusinessUnitId</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>businessUnitId</td>
+<td>null</td>
+<td>The id of the business unit to query against</td>
+</tr>
+<tr>
+<td>_pageSize</td>
+<td>10</td>
+<td>The number of results to get per page</td>
+</tr>
+<tr>
+<td>_page</td>
+<td>1</td>
+<td>The page to get the results for</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
+<h2 id='get-a-specific-order'>Get a Specific Order</h2>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DF66878B-8787-4D40-9A17-7E705B734833"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"purchasingOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423432432"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactForename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-24T20:04:30.473"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"editable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cancellable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific Order.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET api/v2/orders/{orderId}?businessUnitId=yourBusinessUnitId</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -664,16 +742,182 @@ Remember — always include the businessUnitId as a query parameter!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>orderId</td>
+<td>The ID of the Order to retrieve</td>
 </tr>
 </tbody></table>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>businessUnitId</td>
+<td>null</td>
+<td>The id of the business unit to query against</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
+<h2 id='create-an-order'>Create an Order</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"purchaseOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your Order Reference"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact email address"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"emailKeys"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"featureSetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feature set id"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sourceReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your source reference"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feedbackLinkUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your feedback link uri"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feedbackLinkText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submit feedback"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enableFeedbackLink"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"achievementCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35044</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f48f74f-1738-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"businessUnit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133g13e5-5cf3-4692-afa7-3b7548f00d44"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdByUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"forename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"orderSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67a6b9b1-8a96-4b64-8165-0207e132dd0a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"purchasingOrderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactForename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-21T12:49:24.7613405Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"editable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cancellable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/orders/35044"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates an Order.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST api/v2/orders?businessUnitId=yourBusinessUnitId</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>businessUnitId</td>
+<td>null</td>
+<td>The id of the business unit to query against</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
+<h1 id='order-items'>Order Items</h1><h2 id='get-all-order-items-for-an-order'>Get All Order Items for an Order</h2>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"featureSetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94771bf7-6b38-e911-8373-00155d026631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enableFeedbackLink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M10999A - SQL Server on Linux (Standard - 180 days)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v2/orders/1/items"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"_pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalItemCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasPreviousPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFirstPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLastPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstItemOnPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastItemOnPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a paginated set of Order Items for an Order.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET api/v2/orders/{orderId}/items?businessUnitId=yourBusinessUnitId</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>The ID of the Order to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>businessUnitId</td>
+<td>null</td>
+<td>The id of the business unit to query against</td>
+</tr>
+<tr>
+<td>_pageSize</td>
+<td>10</td>
+<td>The number of results to get per page</td>
+</tr>
+<tr>
+<td>_page</td>
+<td>1</td>
+<td>The page to get the results for</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — always include the businessUnitId as a query parameter! 
+</aside>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+Clients with Card payment terms can not use this API and will get an error. 
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The Order API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -687,39 +931,19 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Unauthorized -- Your JWT token is wrong.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- Requested resource was not found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Method Not Allowed -- You tried to access a request with an invalid method.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- We had a problem with our server.</td>
 </tr>
 <tr>
 <td>503</td>
